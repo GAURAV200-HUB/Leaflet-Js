@@ -1,0 +1,11 @@
+*{
+    margin: 0 auto;
+    padding: 0 auto;
+    box-sizing: border-box;
+}
+
+#myMap {
+    background-color: aquamarine;
+    height: 500px;
+    width: 1000px;
+}
