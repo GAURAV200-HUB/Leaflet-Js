@@ -6,14 +6,51 @@ L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=mQ0CCTAwm
 }).addTo(map);
 
 // To add a icon on Map
-var leafletIcon = L.icon ({
-    iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-green.png',
-    shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
-    iconSize: [38, 95],
-    iconAnchor: [22, 94],
-    shadowAnchor: [4, 62],
-    popupAnchor: [12, -90]
+
+// var leafletIcon = L.icon ({
+//     iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-green.png',
+//     shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
+//     iconSize: [38, 95],
+//     iconAnchor: [22, 94],
+//     shadowAnchor: [4, 62],
+//     popupAnchor: [12, -90]
+// })
+
+// To add different icons with same propertiy on different position of Map
+
+var LeafletIcon = L.Icon.extend({
+    options: {
+        shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
+        iconSize: [38, 95],
+        shadowSize: [50, 64],
+        iconAnchor: [22, 94],
+        shadowAnchor: [4, 62],
+        popupAnchor: [12, -90]
+    }
 })
+
+var greenIcon = new LeafletIcon({
+    iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-green.png'
+}),
+    redIcon = new LeafletIcon({
+        iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-red.png'
+    }),
+    orangeIcon = new LeafletIcon({
+        iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-orange.png'
+    })
+
+var marker = L.marker([19.208279068210725, 72.81103841754909], {
+    icon: greenIcon,
+    title: 'Vihar Lake'
+}).addTo(map);
+
+var marker = L.marker([19.222624716152872, 72.86914579364772], {
+    icon: redIcon
+}).addTo(map);
+
+var marker = L.marker([19.22011229197666, 72.91146032306666], {
+    icon: orangeIcon
+}).addTo(map);
 
 // To add a marker on Map
 var marker = L.marker([19.0759899, 72.8773928], {
